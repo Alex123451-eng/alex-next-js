@@ -1,0 +1,42 @@
+.wrapper {
+  display: flex;
+  padding: 10px;
+  background: var(--main-white);
+  height: 95vh;
+  box-sizing: border-box;
+}
+
+.textBlock {
+  display: flex;
+  flex-direction: column;
+  font-size: 16px;
+  width: 33%;
+  color: var(--text-gray);
+}
+
+.brandName {
+  color: var(--text-gray);
+}
+
+.name {
+  padding: 10px 0;
+  font-weight: 700;
+  color: var(--text-black);
+  font-size: 20px;
+}
+
+.image {
+  display: flex;
+  justify-content: center;
+  width: 33%;
+}
+
+.price {
+  display: flex;
+  justify-content: center;
+  margin-left: 10px;
+  width: 33%;
+  color: var(--text-black);
+  font-weight: 700;
+  font-size: 18px;
+}

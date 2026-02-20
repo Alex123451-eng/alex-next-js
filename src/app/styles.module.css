@@ -1,0 +1,29 @@
+.header {
+  padding: 5px;
+  background: var(--main-gray);
+  height: 5vh;
+  display: flex;
+  align-items: center;
+}
+
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 5vh;
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+  padding: 5px;
+  background: var(--main-gray);
+  text-align: center;
+}
+
+.link {
+  color: var(--text-orange);
+  margin-right: 10px;
+}
+
+.activeLink {
+  color: var(--text-white);
+}
