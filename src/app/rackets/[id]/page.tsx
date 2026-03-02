@@ -1,20 +1,19 @@
 import Image from 'next/image';
-import { rackets } from '@utils/mock';
 import { FC } from 'react';
 import { CARD_SIZES } from '@utils/constants';
 
 import styles from './styles.module.css';
-
-export const generateStaticParams = () => {
-  return [{ id: '1' }, { id: '2' }, { id: '3' }];
-};
+import { getRacketById } from '@/services/getRacketById';
+import { notFound } from 'next/navigation';
 
 const RacketPage: FC<PageProps<'/rackets/[id]'>> = async ({ params }) => {
   const { bigWidth: width, bigHeight: height } = CARD_SIZES;
   const { id } = await params;
-  const racket = rackets.find((racket) => racket.id === +id);
+  const { isError, data: racket } = await getRacketById(id)
 
-  if (!racket) return 'oops';
+  if (isError) return 'oops';
+
+  if (!racket) return notFound()
 
   const {
     name,

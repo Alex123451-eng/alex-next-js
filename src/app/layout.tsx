@@ -23,7 +23,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   const pathName = usePathname();
-
+  // TODO сделать собственный Link, для которого будет написана логика выделения
+  // чтобы не писать каждый раз
   return (
     <html lang="en">
       <body style={COLORS} className={`${roboto.variable}`}>
