@@ -18,4 +18,5 @@ export const COLORS = {
 export const LINKS_MAIN = [
   { href: '/', name: 'Главная' },
   { href: '/rackets', name: 'Ракетки' },
+  { href: '/rackets/top10', name: 'Топ 10 ракеток' },
 ];

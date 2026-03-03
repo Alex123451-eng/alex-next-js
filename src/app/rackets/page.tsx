@@ -1,13 +1,11 @@
-import { Card } from '../components/Card/Card';
-import styles from './styles.module.css';
-import { rackets } from '@utils/mock';
+import { RacketsPage as RacketsPageComponent } from '../components';
+import { Suspense } from 'react';
 
-export default function RacketsPage() {
+
+export default async function RacketsPage() {
   return (
-    <div className={styles.wrapper}>
-      {rackets.map(({ id, imageUrl, name }) => {
-        return <Card key={id} imageUrl={imageUrl} name={name} id={id} />;
-      })}
-    </div>
+    <Suspense fallback="Loading rackets' grid">
+      <RacketsPageComponent />
+    </Suspense>
   );
 }

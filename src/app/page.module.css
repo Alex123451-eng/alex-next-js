@@ -1,5 +1,6 @@
 .page {
   padding: 20px;
+  padding-bottom: calc(20px + 5vh);
 }
 
 .page h1 {
@@ -10,6 +11,10 @@
   display: flex;
   width: 100%;
   overflow-x: auto;
+}
+
+.racketsCarousel:first-of-type {
+  margin-bottom: 20px;
 }
 
 .racketsCarousel img {

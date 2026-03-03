@@ -1,0 +1,10 @@
+.racketsCarousel {
+  padding-top: 20px;
+  display: flex;
+  width: 100%;
+  overflow-x: auto;
+}
+
+.racketsCarousel img {
+  margin-right: 10px;
+}
