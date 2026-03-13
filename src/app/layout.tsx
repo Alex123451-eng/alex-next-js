@@ -1,15 +1,15 @@
-'use client';
-
 import { Roboto } from 'next/font/google';
 import './globals.css';
-import Link from 'next/link';
-import { usePathname } from 'next/navigation';
+
 import cls from 'classnames';
 
 import { COLORS } from '@utils/constants';
 
 import { LINKS_MAIN } from '@utils/constants';
 import styles from './styles.module.css';
+import { Metadata } from 'next';
+import { CustomLink } from './components/CustomLink/CustomLink';
+import NextTopLoader from 'nextjs-toploader';
 
 const roboto = Roboto({
   weight: ['400', '700'],
@@ -17,29 +17,24 @@ const roboto = Roboto({
   variable: '--font-roboto',
 });
 
+export const metadata: Metadata = {
+  title: 'Racket site',
+  description: 'Description of the racket site'
+}
+
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const pathName = usePathname();
-  // TODO сделать собственный Link, для которого будет написана логика выделения
-  // чтобы не писать каждый раз
   return (
     <html lang="en">
       <body style={COLORS} className={`${roboto.variable}`}>
+        <NextTopLoader />
         <header className={cls(styles.header)}>
           {LINKS_MAIN.map(({ name, href }) => {
             return (
-              <Link
-                key={href}
-                href={href}
-                className={cls(styles.link, {
-                  [styles.activeLink]: href === pathName,
-                })}
-              >
-                {name}
-              </Link>
+              <CustomLink key={href} name={name} href={href} styles={styles} />
             );
           })}
         </header>

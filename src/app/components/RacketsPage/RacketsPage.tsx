@@ -6,7 +6,7 @@ import styles from './styles.module.css';
 export const RacketsPage = async () => {
   const { isError, data: rackets } = await getRackets({ page: 1, limit: 20 })
 
-  if (isError) return 'Error rackets'
+  if (isError) throw new Error
   if (!rackets) return 'No rackets data'
 
   return (

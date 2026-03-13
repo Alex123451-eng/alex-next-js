@@ -5,13 +5,34 @@ import { CARD_SIZES } from '@utils/constants';
 import styles from './styles.module.css';
 import { getRacketById } from '@/services/getRacketById';
 import { notFound } from 'next/navigation';
+import { Metadata } from 'next';
+import { getMetaRacketById } from '@/services/getMetaRacketById';
+
+export async function generateMetadata({ params }: PageProps<'/rackets/[id]'>): Promise<Metadata> {
+  const { id } = await params
+  const { isError, data } = await getMetaRacketById(id)
+
+  if (isError || !data) {
+    return {
+      title: 'default title',
+      description: 'default description',
+    }
+  }
+
+  const { name: title, description } = data
+
+  return {
+    title,
+    description
+  }
+}
 
 const RacketPage: FC<PageProps<'/rackets/[id]'>> = async ({ params }) => {
   const { bigWidth: width, bigHeight: height } = CARD_SIZES;
   const { id } = await params;
   const { isError, data: racket } = await getRacketById(id)
 
-  if (isError) return 'oops';
+  if (isError) throw new Error
 
   if (!racket) return notFound()
 

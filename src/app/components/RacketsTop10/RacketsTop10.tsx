@@ -4,7 +4,7 @@ import { getRacketsTop10 } from '@/services/getRacketsTop10';
 export const RacketsTop10 = async () => {
   const { isError, data: rackets } = await getRacketsTop10()
 
-  if (isError) return 'Error top 10 rackets'
+  if (isError) throw new Error
   if (!rackets) return 'No top 10 rackets data'
 
   return (
