@@ -1,15 +1,12 @@
 import { Roboto } from 'next/font/google';
 import './globals.css';
 
-import cls from 'classnames';
 
 import { COLORS } from '@utils/constants';
 
-import { LINKS_MAIN } from '@utils/constants';
-import styles from './styles.module.css';
 import { Metadata } from 'next';
-import { CustomLink } from './components/CustomLink/CustomLink';
 import NextTopLoader from 'nextjs-toploader';
+import { Layout } from './components/layout/layout';
 
 const roboto = Roboto({
   weight: ['400', '700'],
@@ -31,17 +28,7 @@ export default function RootLayout({
     <html lang="en">
       <body style={COLORS} className={`${roboto.variable}`}>
         <NextTopLoader />
-        <header className={cls(styles.header)}>
-          {LINKS_MAIN.map(({ name, href }) => {
-            return (
-              <CustomLink key={href} name={name} href={href} styles={styles} />
-            );
-          })}
-        </header>
-        {children}
-        <footer className={cls(styles.footer)}>
-          Мой замечательный footer 2026
-        </footer>
+        <Layout>{children}</Layout>
       </body>
     </html>
   );

@@ -1,5 +1,5 @@
 import { IRacket } from "@/types/racket"
-import { Response } from "@/types/request"
+import { Response } from "@/types/response"
 import { BASE_API_URL } from "@/utils/service"
 
 import { getRacketsParams } from "@/types/racket"

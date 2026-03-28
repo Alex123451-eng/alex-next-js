@@ -42,26 +42,37 @@ const RacketPage: FC<PageProps<'/rackets/[id]'>> = async ({ params }) => {
     imageUrl,
     price,
     brand: { name: brandName },
+    userData
   } = racket;
 
+  const isFavorite = userData?.isFavorite
+
   return (
-    <div className={styles.wrapper}>
-      <div className={styles.textBlock}>
-        <span className={styles.brandName}>{brandName}</span>
-        <span className={styles.name}>{name}</span>
-        <span className={styles.description}>{description}</span>
+    <>
+      {userData && (
+        isFavorite 
+        ? <button>Убрать из избранного</button> 
+        : <button>Добавить в избранное</button>
+      )}
+      <div className={styles.wrapper}>
+        <div className={styles.textBlock}>
+          <span className={styles.brandName}>{brandName}</span>
+          <span className={styles.name}>{name}</span>
+          <span className={styles.description}>{description}</span>
+        </div>
+        <div className={styles.image}>
+          <Image
+            width={width}
+            height={height}
+            src={imageUrl}
+            alt={name}
+            unoptimized={true}
+          />
+        </div>
+        <span className={styles.price}>€{price}</span>
       </div>
-      <div className={styles.image}>
-        <Image
-          width={width}
-          height={height}
-          src={imageUrl}
-          alt={name}
-          unoptimized={true}
-        />
-      </div>
-      <span className={styles.price}>€{price}</span>
-    </div>
+    </>
+
   );
 };
 

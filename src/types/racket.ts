@@ -13,6 +13,7 @@ export interface IRacket {
         id: number;
         name: string;
     };
+    userData: { isFavorite: boolean } | null;
 };
 
 export type getRacketsParams = {
