@@ -1,4 +1,4 @@
-import { Response } from "@/types/request"
+import { Response } from "@/types/response"
 import { BASE_API_URL } from "@/utils/service"
 
 export const getMetaRacketById = async (racketId: string): Response<{ name: string; description: string }> => {
